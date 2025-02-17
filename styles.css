@@ -75,9 +75,15 @@ nav {
 }
 
 .company-name {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    color: #f8fafc;
+    color: #00E6E6;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.nav-logo:hover .company-name {
+    color: #00B3B3;
 }
 
 .nav-links {
