@@ -16,6 +16,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0
+
+      - name: Setup Git LFS
+        run: |
+          git lfs install
+          git lfs pull
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -28,6 +36,14 @@ jobs:
         run: |
           echo "core-analytics.ai" > CNAME
           echo "/* /index.html 200" > _redirects
+
+      - name: Fix permissions
+        run: |
+          chmod -R 755 .
+          find . -type f -name "*.png" -exec chmod 644 {} \;
+          find . -type f -name "*.svg" -exec chmod 644 {} \;
+          find . -type f -name "*.jpg" -exec chmod 644 {} \;
+          find . -type f -name "*.jpeg" -exec chmod 644 {} \;
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
