@@ -101,7 +101,7 @@
     <div class="container">
         <div class="signup-form-container">
             <h2 class="form-title">Get Started with Core Analytics</h2>
-            <form id="signupForm" class="signup-form" action="https://formspree.io/f/xpzgwlrw" method="POST">
+            <form id="signupForm" class="signup-form" action="https://formspree.io/f/xjkgppbe" method="POST">
                 <div class="form-group">
                     <label class="required" for="firstName">First Name</label>
                     <input type="text" id="firstName" name="firstName" required>
@@ -114,7 +114,7 @@
 
                 <div class="form-group">
                     <label class="required" for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="_replyto" required>
                 </div>
 
                 <div class="form-group">
@@ -190,6 +190,9 @@
                     <label class="required" for="customReports">Number of Reports Needed</label>
                     <input type="number" id="customReports" name="customReports" min="1" placeholder="Enter number of reports needed">
                 </div>
+
+                <input type="hidden" name="_subject" value="New Core Analytics Signup">
+                <input type="hidden" name="_next" value="https://core-analytics.ai/success.html">
 
                 <button type="submit" class="submit-button">Submit</button>
             </form>
