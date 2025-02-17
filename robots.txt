@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /about.html
+Allow: /contact.html
+
+Disallow: /admin-dashboard.html
+Disallow: /user-dashboard.html
+Disallow: /js/
+Disallow: /css/
+Disallow: /.github/
+Disallow: /responses.xlsx
+
+Sitemap: https://core-analytics.ai/sitemap.xml
