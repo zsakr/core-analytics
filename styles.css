@@ -112,6 +112,69 @@ nav {
     box-shadow: 0 4px 6px rgba(0, 230, 230, 0.2);
 }
 
+/* Mobile Navigation Styles */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    nav {
+        position: relative;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: -2rem;
+        right: -2rem;
+        background: var(--background-color);
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 0.75rem 0;
+    }
+
+    .nav-cta {
+        margin-top: 0.5rem;
+        display: inline-block;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .nav-container {
+        padding: 1rem;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+    }
+
+    .nav-logo img {
+        height: 35px;
+    }
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -438,7 +501,6 @@ nav {
 
 .contact-form .submit-button:hover {
     background: var(--primary-dark);
-    transform: translateY(-2px);
 }
 
 /* Advanced Features Section */
@@ -789,6 +851,7 @@ nav {
 .auth-form select {
     width: 100%;
     padding: 0.75rem 1rem;
+    background: #ffffff;
     border: 1px solid rgba(0, 230, 230, 0.2);
     border-radius: 8px;
     font-size: 1rem;
