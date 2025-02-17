@@ -19,14 +19,15 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        with:
+          enablement: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          static_site_generator: "html"
 
-      - name: Create CNAME file
+      - name: Create CNAME and config files
         run: |
           echo "core-analytics.ai" > CNAME
-          echo "Options -MultiViews" > .htaccess
-          echo "RewriteEngine On" >> .htaccess
-          echo "RewriteCond %{REQUEST_FILENAME} !-f" >> .htaccess
-          echo "RewriteRule ^ index.html [QSA,L]" >> .htaccess
+          echo "/* /index.html 200" > _redirects
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -46,3 +47,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
