@@ -11,10 +11,7 @@ permissions:
   id-token: write
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,13 +21,28 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Create CNAME file
-        run: echo "core-analytics.ai" > CNAME
+        run: |
+          echo "core-analytics.ai" > CNAME
+          echo "Options -MultiViews" > .htaccess
+          echo "RewriteEngine On" >> .htaccess
+          echo "RewriteCond %{REQUEST_FILENAME} !-f" >> .htaccess
+          echo "RewriteRule ^ index.html [QSA,L]" >> .htaccess
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
