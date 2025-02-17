@@ -79,11 +79,6 @@ nav {
     font-weight: 600;
     color: #00E6E6;
     letter-spacing: 0.5px;
-    transition: color 0.3s ease;
-}
-
-.nav-logo:hover .company-name {
-    color: #00B3B3;
 }
 
 .nav-links {
@@ -104,17 +99,27 @@ nav {
     color: #00E6E6;
 }
 
-.login-button {
+.cta-button {
     background-color: #00E6E6;
-    color: #0f172a !important;
-    padding: 0.5rem 1.25rem;
+    border: none;
     border-radius: 4px;
-    font-weight: 600 !important;
-    transition: background-color 0.3s ease !important;
+    padding: 0;
+    transition: background-color 0.3s ease;
 }
 
-.login-button:hover {
+.cta-button:hover {
     background-color: #00B3B3;
+}
+
+.cta-button a {
+    display: inline-block;
+    color: #0f172a !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1.25rem;
+    text-decoration: none;
+}
+
+.cta-button:hover a {
     color: #0f172a !important;
 }
 
@@ -156,10 +161,9 @@ nav {
         text-align: center;
     }
 
-    .login-button {
-        margin: 0.5rem 0;
-        width: auto;
-        display: inline-block;
+    .cta-button {
+        width: 200px;
+        margin: 0.5rem auto;
     }
 
     .company-name {
