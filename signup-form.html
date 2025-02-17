@@ -8,7 +8,6 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         .signup-form-container {
             max-width: 600px;
@@ -195,9 +194,7 @@
                 <input type="hidden" name="_subject" value="New Core Analytics Signup">
                 <input type="hidden" name="_next" value="https://core-analytics.ai/success.html">
                 
-                <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY" data-callback="onRecaptchaSuccess"></div>
-                
-                <button type="submit" class="submit-button" disabled id="submitButton">Submit</button>
+                <button type="submit" class="submit-button">Submit</button>
             </form>
         </div>
     </div>
@@ -208,11 +205,6 @@
             duration: 1000,
             once: true
         });
-
-        // reCAPTCHA callback
-        function onRecaptchaSuccess() {
-            document.getElementById('submitButton').disabled = false;
-        }
 
         // Form handling
         const form = document.getElementById('signupForm');
