@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Core Analytics</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <nav class="dashboard-nav">
+        <div class="nav-logo">
+            <img src="assets/images/core_logo.png" alt="Core Analytics Logo">
+            <span class="company-title">Core Analytics</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="#users"><i class="fas fa-users"></i> Users</a>
+            <a href="#analytics"><i class="fas fa-chart-line"></i> Analytics</a>
+            <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+        </div>
+        <div class="nav-profile">
+            <span id="adminName">Admin</span>
+            <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </nav>
+
+    <main class="dashboard-main">
+        <header class="dashboard-header">
+            <h1>Admin Dashboard</h1>
+            <div class="header-actions">
+                <button class="refresh-btn"><i class="fas fa-sync"></i> Refresh</button>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Users</h3>
+                    <p class="stat-number">0</p>
+                    <p class="stat-change positive">+0% this week</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Sessions</h3>
+                    <p class="stat-number">0</p>
+                    <p class="stat-change">Current</p>
+                </div>
+                <div class="stat-card">
+                    <h3>New Signups</h3>
+                    <p class="stat-number">0</p>
+                    <p class="stat-change positive">+0% this week</p>
+                </div>
+            </div>
+
+            <div class="users-section">
+                <div class="section-header">
+                    <h2>User Management</h2>
+                    <button class="add-user-btn"><i class="fas fa-plus"></i> Add User</button>
+                </div>
+                <div class="users-table-wrapper">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Country</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- Users will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>
