@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Analytics - Core AI Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00E6E6;
+            --primary-dark: #00B3B3;
+            --secondary: #00FFFF;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --card-bg: rgba(15, 23, 42, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 45px;
+            width: auto;
+            filter: brightness(1.2) contrast(1.1);
+            mix-blend-mode: screen;
+        }
+
+        .nav-logo .company-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--light);
+            letter-spacing: 0.5px;
+            font-family: 'Inter', sans-serif;
+            text-transform: none;
+            background: linear-gradient(120deg, #00FFFF, #00E6E6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 230, 230, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+        }
+
+        .hero-text {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.3));
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 230, 230, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 230, 230, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--dark) 0%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            font-size: 1.25rem;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            color: var(--gray);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-list li i {
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+
+        .features-cta {
+            text-align: center;
+            margin-top: 6rem;
+            padding: 4rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .features-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .features-cta p {
+            color: var(--gray);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 2rem;
+            }
+
+            .features-cta {
+                padding: 2rem;
+                margin-top: 4rem;
+            }
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #1e293b 0%, var(--dark) 100%);
+            position: relative;
+        }
+
+        .divider {
+        font-weight: bold; /* Emphasizes the '/' */
+        margin: 0 2px; /* Adds space around the '/' */
+    }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--dark) 0%, #1e293b 100%);
+            position: relative;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-member:hover::before {
+            opacity: 1;
+        }
+
+        .member-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--light);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .member-role {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .member-social {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .social-link {
+            color: var(--gray);
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #1e293b 0%, var(--dark) 100%);
+            position: relative;
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 4rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            font-size: 1.25rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-text {
+            color: #000000;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* 3D Animation Canvas */
+        #animation-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Floating Elements Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* About Section Styles */
+        .about-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #1e293b 0%, var(--dark) 100%);
+            position: relative;
+        }
+
+        .mission-statement {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .mission-statement h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .mission-statement p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .tech-section {
+            margin: 6rem 0;
+        }
+
+        .tech-section h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tech-item {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tech-item h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .tech-item p {
+            color: var(--gray);
+        }
+
+        .achievements-section {
+            margin: 6rem 0;
+        }
+
+        .achievements-section h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-card small {
+            display: block;
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .partners-section {
+            margin: 6rem 0;
+        }
+
+        .partners-section h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .partner-logo {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-5px);
+        }
+
+        .partner-logo i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .partner-logo p {
+            color: var(--light);
+            font-weight: 500;
+        }
+
+        .about-cta {
+            text-align: center;
+            margin-top: 6rem;
+            padding: 4rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .about-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-cta p {
+            color: var(--gray);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--primary);
+            color: var(--light);
+        }
+
+        @media (max-width: 768px) {
+            .tech-grid,
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .mission-statement {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Footer Styles */
+        .main-footer {
+            background: linear-gradient(to bottom, var(--dark), #0a0f1a);
+            padding: 80px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(37, 99, 235, 0.2),
+                transparent
+            );
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 2.5fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand {
+            max-width: 400px;
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-bottom: 1.5rem;
+            filter: brightness(0.9);
+        }
+
+        .brand-description {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            color: var(--gray);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-links-column h4 {
+            color: var(--light);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-newsletter {
+            padding: 3rem;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 16px;
+            margin: 4rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-content h4 {
+            color: var(--light);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-content p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            border-radius: 8px;
+            background: rgba(15, 23, 42, 0.6);
+            color: var(--light);
+            font-size: 1rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .newsletter-form .cta-button {
+            padding: 1rem 2rem;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .footer-bottom-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary);
+        }
+
+        .separator {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-brand {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-links-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-links-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .footer-bottom-links {
+                justify-content: center;
+            }
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: var(--section-padding) 0;
+            background: linear-gradient(180deg, var(--dark) 0%, rgba(15, 23, 42, 0.95) 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .process-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            margin-bottom: 3rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 230, 230, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px rgba(0, 230, 230, 0.1);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem 2rem;
+            background: rgba(0, 230, 230, 0.05);
+        }
+
+        .step-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .step-header h3 {
+            font-size: 1.25rem;
+            color: var(--light);
+            margin: 0;
+        }
+
+        .step-content {
+            padding: 2rem;
+        }
+
+        .step-description p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .step-details {
+            background: rgba(0, 230, 230, 0.03);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--light);
+            margin-bottom: 1rem;
+        }
+
+        .detail-item i {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: rgba(0, 230, 230, 0.05);
+            border-radius: 8px;
+        }
+
+        .spec-item i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .spec-item strong {
+            color: var(--light);
+            font-size: 0.9rem;
+        }
+
+        .spec-item span {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .upload-specs .spec-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .spec-col h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .spec-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .spec-col ul li {
+            color: var(--light);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .spec-col ul li i {
+            color: var(--primary);
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .analysis-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(0, 230, 230, 0.05);
+            border-radius: 12px;
+        }
+
+        .analysis-item i {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .analysis-item h4 {
+            color: var(--light);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .analysis-item p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .dashboard-features .feature-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-col h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .feature-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-col ul li {
+            color: var(--light);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-col ul li i {
+            color: var(--primary);
+        }
+
+        .process-cta {
+            margin-top: 4rem;
+            text-align: center;
+            padding: 3rem;
+            background: rgba(0, 230, 230, 0.05);
+            border-radius: 16px;
+        }
+
+        .process-cta h3 {
+            font-size: 2rem;
+            color: var(--light);
+            margin-bottom: 1rem;
+        }
+
+        .process-cta p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--light);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(0, 230, 230, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .process-step {
+                margin-bottom: 2rem;
+            }
+
+            .step-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .step-content {
+                padding: 1.5rem;
+            }
+
+            .specs-grid,
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .upload-specs .spec-row,
+            .dashboard-features .feature-columns {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .process-cta {
+                padding: 2rem;
+            }
+
+            .process-cta h3 {
+                font-size: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+    <div class="nav-container">
+        <nav>
+            <a href="#top" class="nav-logo">
+                <img src="assets/images/core_logo.png" alt="Core Analytics Logo">
+                <span class="company-title">Core Analytics</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#about">About</a>
+                <a href="#team">Team</a>
+                <a href="#contact">Contact</a>
+                <a href="login.html" target="_blank" rel="noopener noreferrer" class="cta-button">Login</a>
+            </div>
+        </nav>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right">
+                    <h1>Transform Your Squash Game with AI-Powered Analytics</h1>
+                    <p>Experience the future of squash training with real-time analytics, performance tracking, and personalized insights.</p>
+                    <a href="signup-form.html" target="_blank" class="cta-button">Get Started</a>
+                </div>
+                <div class="hero-image" data-aos="fade-left">
+                    <img src="assets/images/squash-court-floor-3d.svg" alt="3D Squash Court Analytics" class="hero-3d">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Advanced Features</h2>
+            <p class="section-subtitle" data-aos="fade-up">Discover how our cutting-edge technology transforms your game</p>
+
+            <div class="features-grid">
+                <!-- Real-time Analysis -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Real-time Analysis</h3>
+                    <p>Instant feedback on player movements, shot selection, and tactical patterns during live matches.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Live shot tracking</li>
+                        <li><i class="fas fa-check"></i> Movement heat maps</li>
+                        <li><i class="fas fa-check"></i> Tactical pattern recognition</li>
+                    </ul>
+                </div>
+
+                <!-- AI-Powered Insights -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Insights</h3>
+                    <p>Advanced machine learning algorithms provide deep insights into playing patterns and improvement areas.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Performance predictions</li>
+                        <li><i class="fas fa-check"></i> Personalized recommendations</li>
+                        <li><i class="fas fa-check"></i> Trend analysis</li>
+                    </ul>
+                </div>
+
+                <!-- Video Analysis -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Advanced Video Analysis</h3>
+                    <p>Frame-by-frame video analysis with automated highlighting of key moments and techniques.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Slow-motion replay</li>
+                        <li><i class="fas fa-check"></i> Technique breakdown</li>
+                        <li><i class="fas fa-check"></i> Compare with pros</li>
+                    </ul>
+                </div>
+
+                <!-- Performance Tracking -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Performance Metrics</h3>
+                    <p>Comprehensive tracking of key performance indicators and progress over time.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Statistical analysis</li>
+                        <li><i class="fas fa-check"></i> Progress tracking</li>
+                        <li><i class="fas fa-check"></i> Custom reporting</li>
+                    </ul>
+                </div>
+
+                <!-- Team Management -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-users-gear"></i>
+                    </div>
+                    <h3>Team Management</h3>
+                    <p>Comprehensive tools for coaches to manage and develop their team's performance.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Player profiles</li>
+                        <li><i class="fas fa-check"></i> Team analytics</li>
+                        <li><i class="fas fa-check"></i> Training plans</li>
+                    </ul>
+                </div>
+
+                <!-- Mobile Access -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-screen"></i>
+                    </div>
+                    <h3>Mobile Access</h3>
+                    <p>Access your analytics and insights anywhere, anytime with our mobile-first platform.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Cross-platform sync</li>
+                        <li><i class="fas fa-check"></i> Offline access</li>
+                        <li><i class="fas fa-check"></i> Real-time notifications</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Feature CTA -->
+            <div class="features-cta" data-aos="fade-up">
+                <h3>Ready to elevate your game?</h3>
+                <p>Join thousands of users who are already using Core AI</p>
+                <a href="signup-form.html" target="_blank" class="cta-button">Start Free Trial</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Experience our streamlined process for advanced sports analytics</p>
+            </div>
+
+            <div class="process-timeline">
+                <!-- Step 1: Account Setup -->
+                <div class="process-step" data-aos="fade-up">
+                    <div class="step-header">
+                        <div class="step-number">01</div>
+                        <h3>Account Setup</h3>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-description">
+                            <p>Begin your performance analysis journey with a simple account setup process.</p>
+                            <div class="step-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-user-plus"></i>
+                                    <span>Choose account type (Player/Coach/Team)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Secure data encryption</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>Immediate dashboard access</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Video Recording -->
+                <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-header">
+                        <div class="step-number">02</div>
+                        <h3>Video Recording</h3>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-description">
+                            <p>Follow our professional recording guidelines for optimal analysis results.</p>
+                            <div class="step-details">
+                                <div class="recording-specs">
+                                    <h4>Technical Specifications</h4>
+                                    <div class="specs-grid">
+                                        <div class="spec-item">
+                                            <i class="fas fa-video"></i>
+                                            <strong>Resolution</strong>
+                                            <span>1080p or higher</span>
+                                        </div>
+                                        <div class="spec-item">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                            <strong>Height</strong>
+                                            <span>10-15 feet elevation</span>
+                                        </div>
+                                        <div class="spec-item">
+                                            <i class="fas fa-angle-down"></i>
+                                            <strong>Angle</strong>
+                                            <span>15-20° downward</span>
+                                        </div>
+                                        <div class="spec-item">
+                                            <i class="fas fa-expand"></i>
+                                            <strong>Coverage</strong>
+                                            <span>Full court view</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Upload Process -->
+                <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-header">
+                        <div class="step-number">03</div>
+                        <h3>Upload Process</h3>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-description">
+                            <p>Seamlessly upload your match footage to our secure platform.</p>
+                            <div class="step-details">
+                                <div class="upload-specs">
+                                    <div class="spec-row">
+                                        <div class="spec-col">
+                                            <h4>Supported Formats</h4>
+                                            <ul>
+                                                <li><i class="fas fa-file-video"></i> MP4</li>
+                                                <li><i class="fas fa-file-video"></i> MOV</li>
+                                                <li><i class="fas fa-file-video"></i> AVI</li>
+                                            </ul>
+                                        </div>
+                                        <div class="spec-col">
+                                            <h4>Requirements</h4>
+                                            <ul>
+                                                <li><i class="fas fa-hdd"></i> Max 2GB per file</li>
+                                                <li><i class="fas fa-lock"></i> Encrypted transfer</li>
+                                                <li><i class="fas fa-signal"></i> Progress tracking</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: AI Analysis -->
+                <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-header">
+                        <div class="step-number">04</div>
+                        <h3>AI Analysis</h3>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-description">
+                            <p>Our advanced AI engine processes your game with precision and depth.</p>
+                            <div class="step-details">
+                                <div class="analysis-grid">
+                                    <div class="analysis-item">
+                                        <i class="fas fa-running"></i>
+                                        <h4>Movement Analysis</h4>
+                                        <p>Player positioning and court coverage patterns</p>
+                                    </div>
+                                    <div class="analysis-item">
+                                        <i class="fas fa-chart-line"></i>
+                                        <h4>Performance Metrics</h4>
+                                        <p>Shot accuracy and movement efficiency</p>
+                                    </div>
+                                    <div class="analysis-item">
+                                        <i class="fas fa-brain"></i>
+                                        <h4>Tactical Insights</h4>
+                                        <p>Game strategy and pattern recognition</p>
+                                    </div>
+                                    <div class="analysis-item">
+                                        <i class="fas fa-chart-bar"></i>
+                                        <h4>Statistical Analysis</h4>
+                                        <p>Comprehensive performance data</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Results Dashboard -->
+                <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step-header">
+                        <div class="step-number">05</div>
+                        <h3>Results Dashboard</h3>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-description">
+                            <p>Access your comprehensive analysis through our intuitive dashboard.</p>
+                            <div class="step-details">
+                                <div class="dashboard-features">
+                                    <div class="feature-columns">
+                                        <div class="feature-col">
+                                            <h4>Visual Analytics</h4>
+                                            <ul>
+                                                <li><i class="fas fa-fire"></i> Heat maps</li>
+                                                <li><i class="fas fa-chart-pie"></i> Shot distribution</li>
+                                                <li><i class="fas fa-route"></i> Movement paths</li>
+                                            </ul>
+                                        </div>
+                                        <div class="feature-col">
+                                            <h4>Performance Metrics</h4>
+                                            <ul>
+                                                <li><i class="fas fa-percentage"></i> Success rates</li>
+                                                <li><i class="fas fa-tachometer-alt"></i> Efficiency scores</li>
+                                                <li><i class="fas fa-chart-line"></i> Progress tracking</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-cta" data-aos="fade-up">
+                <div class="cta-content">
+                    <h3>Transform Your Game with Data-Driven Insights</h3>
+                    <p>Join players worldwide who are already using Core Analytics</p>
+                    <a href="signup-form.html" target="_blank" class="cta-button">Start Free Trial</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">About Core Analytics</h2>
+            
+            <!-- Mission Statement -->
+            <div class="mission-statement" data-aos="fade-up">
+                <h3>Our Mission</h3>
+                <p>At Core Analytics, we're revolutionizing squash performance analysis through cutting-edge AI technology. Our mission is to empower players, coaches, and teams with data-driven insights that elevate their game to unprecedented levels.</p>
+            </div>
+
+            <!-- Main Features Grid -->
+            <div class="features-grid" data-aos="fade-up">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Advanced AI Analysis</h3>
+                    <p>Our proprietary AI algorithms analyze player movements, shot selection, and game patterns in real-time, providing detailed insights and actionable recommendations.</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Performance Tracking</h3>
+                    <p>Track progress over time with comprehensive metrics, including shot accuracy, court coverage, and tactical effectiveness, all visualized through intuitive dashboards.</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Video Analysis</h3>
+                    <p>Advanced video processing technology breaks down matches frame-by-frame, offering detailed technical analysis and instant replay capabilities.</p>
+                </div>
+            </div>
+
+            <!-- Technology Section -->
+            <div class="tech-section" data-aos="fade-up">
+                <h3>Our Technology</h3>
+                <div class="tech-grid">
+                    <div class="tech-item" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-microchip"></i>
+                        <h4>Machine Learning</h4>
+                        <p>State-of-the-art neural networks trained on thousands of professional matches</p>
+                    </div>
+                    <div class="tech-item" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-camera"></i>
+                        <h4>Computer Vision</h4>
+                        <p>Real-time player and ball tracking with millimeter precision</p>
+                    </div>
+                    <div class="tech-item" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-cloud"></i>
+                        <h4>Cloud Processing</h4>
+                        <p>Scalable cloud infrastructure for instant analysis and feedback</p>
+                    </div>
+                    <div class="tech-item" data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>Mobile Integration</h4>
+                        <p>Seamless access across all devices with real-time synchronization</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement Stats -->
+            <div class="achievements-section" data-aos="fade-up">
+                <h3>Our Impact</h3>
+                <div class="stats-grid">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-number">100+</div>
+                        <p>Matches Analyzed</p>
+                        <small>Across juniors, amateur, and pro levels</small>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-number">10+</div>
+                        <p>Active Users</p>
+                        <small>Including top-ranked professionals</small>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-number">99%</div>
+                        <p>Accuracy Rate</p>
+                        <small>In shot detection and analysis</small>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-number"> 
+                            
+                            <span>24</span><span class="divider">/</span><span>7</span>
+                        
+                        </div>
+                        <p>Support Available</p>
+                        <small>Global technical assistance</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partners Section -->
+            <div class="partners-section" data-aos="fade-up">
+                <h3>Trusted By</h3>
+                <div class="partners-grid">
+                    <div class="partner-logo" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-trophy"></i>
+                        <p>Professional Squash Association</p>
+                    </div>
+                    <div class="partner-logo" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-university"></i>
+                        <p>Leading Sports Academies</p>
+                    </div>
+                    <div class="partner-logo" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-medal"></i>
+                        <p>Professional Players and National Teams</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="about-cta" data-aos="fade-up">
+                <h3>Ready to Transform Your Game?</h3>
+                <p>Join the growing community of players and coaches using Core Analytics to achieve their performance goals.</p>
+                <div class="cta-buttons">
+                    <a href="signup-form.html" target="_blank" class="cta-button">Start Free Trial</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Leadership Team</h2>
+            <div class="team-grid">
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member-image">
+                        <div class="image-placeholder">ZS</div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Ziad Sakr</h3>
+                        <p class="member-role">CEO & Co-founder</p>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/ziad-sakr-cs/" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/ziad_sakr/" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-image">
+                        <div class="image-placeholder">AN</div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Abdelrahman Nassar</h3>
+                        <p class="member-role">CMO & Co-founder</p>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/abdelrahman-nassar-9963a521b/" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/abdelrahmann.nassar/" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Get in Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p class="contact-text">support@core-analytics.ai</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <!-- Footer Top Section -->
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="assets/images/core_logo.png" alt="Core Analytics Logo" class="footer-logo">
+                    <p class="brand-description">Revolutionizing squash performance analysis through cutting-edge AI technology and real-time insights.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/coreanalytics.ai/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links-container">
+                    <div class="footer-links-column">
+                        <h4>Resources</h4>
+                        <ul class="footer-links">
+                            <li><a href="documentation.html" target="_blank">Documentation</a></li>
+                            <li><a href="privacy-policy.html" target="_blank">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright"> 2024 Core Analytics. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Initialize GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate stats numbers
+        const stats = document.querySelectorAll('.stat-number');
+        stats.forEach(stat => {
+            const value = stat.innerText;
+            const hasPlus = value.includes('+');
+            const hasPercent = value.includes('%');
+            const number = parseInt(value.replace(/[^0-9]/g, ''));
+            
+            stat.innerText = '0' + (hasPlus ? '+' : '') + (hasPercent ? '%' : '');
+            
+            ScrollTrigger.create({
+                trigger: stat,
+                start: 'top 80%',
+                onEnter: () => {
+                    gsap.to(stat, {
+                        duration: 2,
+                        innerText: number,
+                        snap: { innerText: 1 },
+                        onUpdate: () => {
+                            stat.innerText = Math.floor(stat.innerText) + (hasPlus ? '+' : '') + (hasPercent ? '%' : '');
+                        }
+                    });
+                }
+            });
+        });
+
+        // 3D Animation
+        const canvas = document.createElement('canvas');
+        canvas.id = 'animation-canvas';
+        document.querySelector('.hero').appendChild(canvas);
+
+        const renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            antialias: true,
+            alpha: true
+        });
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // Create floating particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 200;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.005,
+            color: '#2563eb',
+            transparent: true,
+            opacity: 0.8
+        });
+
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            particlesMesh.rotation.x += 0.0003;
+            particlesMesh.rotation.y += 0.0005;
+            renderer.render(scene, camera);
+        }
+
+        // Handle window resize
+        function handleResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+        animate();
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating');
+            
+            parallaxElements.forEach(el => {
+                const speed = 0.5;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

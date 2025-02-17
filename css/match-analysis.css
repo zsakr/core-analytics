@@ -1,0 +1,1016 @@
+/* Content Sections */
+.content-section {
+    display: none;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* Matches Container */
+.matches-container {
+    display: flex;
+    gap: 20px;
+    height: calc(100vh - 100px);
+    position: relative;
+}
+
+.matches-sidebar {
+    width: 300px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    padding: 20px;
+    overflow-y: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.match-content {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Match Items */
+.match-item {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.match-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.match-item h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.match-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.match-info {
+    flex: 1;
+    cursor: pointer;
+}
+
+.match-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.edit-btn {
+    color: #007bff;
+}
+
+.delete-btn {
+    color: #dc3545;
+}
+
+/* Recent Matches */
+.recent-matches {
+    margin-top: 20px;
+}
+
+.matches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.match-preview-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.match-preview-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+.match-preview-card button {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.match-preview-card button:hover {
+    background: #0056b3;
+}
+
+/* Video Upload */
+.video-upload-section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.upload-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.upload-btn:hover {
+    background-color: #218838;
+}
+
+.upload-progress {
+    margin-top: 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 4px;
+    background: #007bff;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Analysis Section */
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.analysis-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.analysis-card h3 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Analytics Section */
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.analytics-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.analytics-card.wide {
+    grid-column: span 2;
+}
+
+.analytics-card h3 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Insights List */
+.insights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.insight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.insight-item:hover {
+    transform: translateX(5px);
+}
+
+.insight-item i {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    color: white;
+}
+
+.insight-item:nth-child(1) i {
+    background: #28a745;
+}
+
+.insight-item:nth-child(2) i {
+    background: #007bff;
+}
+
+.insight-item:nth-child(3) i {
+    background: #ffc107;
+}
+
+.insight-content h4 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.insight-content p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Section Header */
+.section-header {
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.section-header p {
+    margin: 0;
+    color: #666;
+    font-size: 16px;
+}
+
+/* Court Map */
+.court-map {
+    position: relative;
+    width: 100%;
+    padding-top: 150%; /* 3:2 aspect ratio */
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.court-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2px;
+    padding: 2px;
+}
+
+.court-zone {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    transition: background 0.3s ease;
+}
+
+.court-zone:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Charts */
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* Heatmap */
+.heatmap {
+    width: 100%;
+    height: 300px;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .matches-container {
+        flex-direction: column;
+    }
+
+    .matches-sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+    }
+
+    .analysis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1200px) {
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .analytics-card.wide {
+        grid-column: auto;
+    }
+}
+
+/* Add Match Button */
+.add-match-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 3;
+}
+
+.add-match-btn:hover {
+    background-color: #0056b3;
+}
+
+.add-match-btn i {
+    font-size: 12px;
+}
+
+.match-analysis-section {
+    padding: 2rem;
+    background-color: #f8f9fa;
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.report-header h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.8rem;
+}
+
+.report-header .date {
+    color: #6c757d;
+    margin: 0.5rem 0;
+}
+
+#exportPdfBtn {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#exportPdfBtn:hover {
+    background-color: #0056b3;
+}
+
+.report-section {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.report-section h3 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.stats-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.summary-text {
+    line-height: 1.6;
+    color: #4a5568;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.game-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 6px;
+}
+
+.game-card h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.game-score {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.game-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.game-summary {
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.chart-wrapper {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 6px;
+}
+
+.chart-wrapper h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.shot-details {
+    margin-top: 2rem;
+}
+
+.shot-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.shot-stat {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 6px;
+}
+
+.shot-stat h5 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.court-analysis-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.heatmap-wrapper, .movement-wrapper {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 6px;
+}
+
+.heatmap {
+    width: 100%;
+    height: 400px;
+    background: white;
+    border-radius: 4px;
+}
+
+.serve-analysis-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.strategic-analysis-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.strengths-section, .improvements-section, .recommendations-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 6px;
+}
+
+.strengths-section h4, .improvements-section h4, .recommendations-section h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.strengths-section ul, .improvements-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.strengths-section li, .improvements-section li {
+    padding: 0.5rem 0;
+    color: #4a5568;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.strengths-section li:before {
+    content: '✓';
+    color: #38a169;
+    position: absolute;
+    left: 0;
+}
+
+.improvements-section li:before {
+    content: '→';
+    color: #e53e3e;
+    position: absolute;
+    left: 0;
+}
+
+.recommendation-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.recommendation-card h5 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.recommendation-card p {
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.training-plan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.training-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 6px;
+}
+
+.training-card h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.exercise-description {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.exercise-details {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.exercise-details span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6c757d;
+}
+
+.exercise-focus h5 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.exercise-focus ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.exercise-focus li {
+    padding: 0.5rem 0;
+    color: #4a5568;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.exercise-focus li:before {
+    content: '•';
+    color: #4a5568;
+    position: absolute;
+    left: 0;
+}
+
+@media (max-width: 768px) {
+    .match-analysis-section {
+        padding: 1rem;
+    }
+    
+    .stats-overview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .charts-container,
+    .court-analysis-container,
+    .serve-analysis-container,
+    .strategic-analysis-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
+
+.match-analysis-section {
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.report-header h2 {
+    margin: 0;
+    color: #333;
+}
+
+.export-btn {
+    padding: 0.5rem 1rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.export-btn:hover {
+    background: #0056b3;
+}
+
+.report-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.report-section h3 {
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* Executive Summary */
+.executive-summary .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.stat-item h4 {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.stat-item p {
+    margin: 0.5rem 0 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Game Analysis */
+.games-analysis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.game-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.game-card h4 {
+    margin: 0 0 1rem;
+    color: #333;
+}
+
+/* Shot Analysis */
+.shot-analysis-container,
+.serve-analysis-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.chart-container {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    min-height: 300px;
+}
+
+.chart-container h4 {
+    margin: 0 0 1rem;
+    color: #333;
+}
+
+/* Court Analysis */
+.court-analysis-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.heatmap-container {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    min-height: 300px;
+}
+
+#courtHeatmap {
+    width: 100%;
+    height: 300px;
+}
+
+/* Strategic Analysis */
+.strategic-analysis-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.strengths-section,
+.improvements-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.strengths-section h4,
+.improvements-section h4 {
+    margin: 0 0 1rem;
+    color: #333;
+}
+
+.strengths-section ul,
+.improvements-section ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.strengths-section li,
+.improvements-section li {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.recommendation-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.recommendation-card h5 {
+    margin: 0 0 0.5rem;
+    color: #333;
+}
+
+.recommendation-card p {
+    margin: 0;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Training Plan */
+.training-plan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.training-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.training-card h4 {
+    margin: 0 0 1rem;
+    color: #333;
+}
+
+.exercise-description {
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.exercise-details {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.exercise-focus h5 {
+    margin: 0 0 0.5rem;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.exercise-focus ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    color: #555;
+}
+
+.exercise-focus li {
+    margin-bottom: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .match-analysis-section {
+        padding: 1rem;
+    }
+
+    .report-section {
+        padding: 1rem;
+    }
+
+    .chart-container,
+    .heatmap-container {
+        min-height: 250px;
+    }
+}
