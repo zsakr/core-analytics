@@ -17,3 +17,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
           cname: core-analytics.ai
+          force_orphan: true
