@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Core Analytics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00e6e6;
+            --dark: #0a192f;
+            --light: #ffffff;
+            --gray: #8892b0;
+            --lighter-dark: #112240;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            padding: 1rem 2rem;
+            background: rgba(11, 17, 33, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 230, 230, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .faq-header {
+            padding: 120px 0 60px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(11, 17, 33, 0.95) 0%, rgba(11, 17, 33, 0.8) 100%);
+        }
+
+        .faq-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--light) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .faq-description {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .faq-section {
+            padding: 60px 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .faq-category {
+            background: rgba(0, 230, 230, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 230, 230, 0.1);
+        }
+
+        .category-title {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 230, 230, 0.1);
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .question {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--light);
+        }
+
+        .answer {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Core Analytics</a>
+        </div>
+    </nav>
+
+    <header class="faq-header">
+        <div class="container">
+            <h1 class="faq-title">Frequently Asked Questions</h1>
+            <p class="faq-description">Find answers to common questions about Core Analytics and how it can help improve your squash game.</p>
+        </div>
+    </header>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-grid">
+                <div class="faq-category">
+                    <h2 class="category-title">
+                        <i class="fas fa-rocket"></i>
+                        Getting Started
+                    </h2>
+                    <div class="faq-item">
+                        <h3 class="question">What is Core Analytics?</h3>
+                        <p class="answer">Core Analytics is an AI-powered platform designed specifically for squash players and coaches. It analyzes match footage to provide detailed insights about player performance, technique, and strategy.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">How do I start using Core Analytics?</h3>
+                        <p class="answer">Simply sign up for an account, choose your subscription plan, and start uploading your match footage. Our AI will analyze your games and provide comprehensive insights within minutes.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">What equipment do I need?</h3>
+                        <p class="answer">You only need a smartphone or camera to record your matches, and a device (computer, tablet, or smartphone) to access the Core Analytics platform.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">Is there a free trial available?</h3>
+                        <p class="answer">Yes! We offer a free trial period so you can experience the full power of Core Analytics before committing to a subscription.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">Do I need special camera equipment?</h3>
+                        <p class="answer">No, our AI works with standard smartphone cameras. However, for best results, we recommend recording from an elevated position with a clear view of the entire court.</p>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h2 class="category-title">
+                        <i class="fas fa-chart-line"></i>
+                        Analysis & Features
+                    </h2>
+                    <div class="faq-item">
+                        <h3 class="question">What kind of analysis does Core Analytics provide?</h3>
+                        <p class="answer">We provide detailed analysis of shot selection, court movement, tactical patterns, and technical execution. You'll receive personalized insights and recommendations for improvement.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">How accurate is the AI analysis?</h3>
+                        <p class="answer">Our AI has been trained on thousands of professional matches and achieves over 95% accuracy in shot detection and player movement analysis.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">Can I track my progress over time?</h3>
+                        <p class="answer">Yes! Core Analytics provides detailed progress tracking, showing improvements in various aspects of your game through easy-to-understand visualizations and metrics.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">How long does it take to analyze a match?</h3>
+                        <p class="answer">Most matches are analyzed within 15-20 minutes, depending on the length of the footage. You'll receive a notification when your analysis is ready.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">Can I share my analysis with others?</h3>
+                        <p class="answer">Yes, you can share your analysis with coaches, teammates, or other players. Our platform includes collaboration features for easy sharing and feedback.</p>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h2 class="category-title">
+                        <i class="fas fa-users"></i>
+                        Teams & Coaching
+                    </h2>
+                    <div class="faq-item">
+                        <h3 class="question">Can coaches use Core Analytics for their students?</h3>
+                        <p class="answer">Yes, we offer special team plans for coaches and academies, allowing them to manage multiple players and provide personalized feedback based on AI insights.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">How can Core Analytics benefit my academy?</h3>
+                        <p class="answer">Core Analytics helps streamline coaching by providing objective data, tracking player development, and identifying areas for improvement across your entire team.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">Is there a limit to the number of players I can manage?</h3>
+                        <p class="answer">Our team plans are flexible and can accommodate academies of any size. Contact us for custom solutions for larger organizations.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">Can I integrate Core Analytics with other coaching tools?</h3>
+                        <p class="answer">Yes, we offer API integration options for enterprise plans, allowing you to connect Core Analytics with your existing coaching and management tools.</p>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h2 class="category-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Privacy & Security
+                    </h2>
+                    <div class="faq-item">
+                        <h3 class="question">How secure is my data?</h3>
+                        <p class="answer">We use industry-standard encryption and security measures to protect your data. All match footage and analysis are stored securely and are only accessible to authorized users.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">Who owns the match footage I upload?</h3>
+                        <p class="answer">You retain full ownership of all content you upload to Core Analytics. We never share or use your footage without your explicit permission.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">Can I delete my data?</h3>
+                        <p class="answer">Yes, you have full control over your data. You can delete individual matches or your entire account at any time.</p>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h2 class="category-title">
+                        <i class="fas fa-credit-card"></i>
+                        Pricing & Plans
+                    </h2>
+                    <div class="faq-item">
+                        <h3 class="question">What payment methods do you accept?</h3>
+                        <p class="answer">We accept all major credit cards, PayPal, and bank transfers for enterprise plans.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">Can I change or cancel my plan?</h3>
+                        <p class="answer">Yes, you can upgrade, downgrade, or cancel your plan at any time. Changes take effect at the start of your next billing cycle.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">Are there any long-term commitments?</h3>
+                        <p class="answer">No, all our plans are month-to-month with no long-term commitments required. Enterprise plans may have custom terms.</p>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h2 class="category-title">
+                        <i class="fas fa-headset"></i>
+                        Support
+                    </h2>
+                    <div class="faq-item">
+                        <h3 class="question">How can I get help if I need it?</h3>
+                        <p class="answer">Our support team is available 24/7 via email and chat. Enterprise plans include dedicated support channels and priority response times.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">Do you offer training for new users?</h3>
+                        <p class="answer">Yes, we provide free onboarding sessions for all users and comprehensive training for team/enterprise plans.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="question">Where can I find tutorials and guides?</h3>
+                        <p class="answer">We have an extensive knowledge base with video tutorials, user guides, and best practices available to all users.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
