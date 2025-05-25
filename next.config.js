@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   allowedDevOrigins: ['127.0.0.1', 'localhost'],
-  output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
-
+  output: 'export',
   images: {
     unoptimized: true,
     domains: ['images.unsplash.com', 'firebasestorage.googleapis.com'],
   },
+  basePath: '',
 
   webpack: (config, { dev }) => {
     config.module.rules.push({
