@@ -1,0 +1,15 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer circle -->
+  <circle cx="400" cy="400" r="380" stroke="#40BFFD" stroke-width="40" />
+  
+  <!-- Vertical line through center -->
+  <line x1="400" y1="20" x2="400" y2="780" stroke="#40BFFD" stroke-width="40" />
+  
+  <!-- Inner semi-circles -->
+  <path d="M400 400 A180 180 0 0 0 220 400" stroke="#40BFFD" stroke-width="40" fill="none" />
+  <path d="M400 400 A180 180 0 0 1 220 400" stroke="#40BFFD" stroke-width="40" fill="none" />
+  
+  <!-- Semi-circle fill -->
+  <path d="M400 400 A180 180 0 0 0 220 400 A180 180 0 0 0 400 400" fill="#40BFFD" />
+</svg>
+

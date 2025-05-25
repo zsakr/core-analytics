@@ -1,0 +1,57 @@
+import { NextResponse } from 'next/server';
+import { adminAuth } from '@/lib/firebase-admin';
+
+export async function GET() {
+  const email = 'ziad.sakr40@gmail.com';
+  
+  try {
+    // Get user record
+    const userRecord = await adminAuth.getUserByEmail(email);
+    
+    // Create custom token
+    const customToken = await adminAuth.createCustomToken(userRecord.uid);
+    
+    // Exchange custom token for ID token
+    const response = await fetch(
+      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=${process.env.FIREBASE_API_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: customToken, returnSecureToken: true })
+      }
+    );
+
+    const data = await response.json();
+    const idToken = data.idToken;
+
+    // Send verification email
+    await fetch(
+      `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${process.env.FIREBASE_API_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          requestType: 'VERIFY_EMAIL',
+          idToken: idToken
+        })
+      }
+    );
+
+    return NextResponse.json({
+      success: true,
+      message: 'Verification email sent',
+      debug: {
+        userId: userRecord.uid,
+        email: userRecord.email
+      }
+    });
+
+  } catch (error: any) {
+    console.error('Error:', error);
+    return NextResponse.json({
+      error: error.message,
+      code: error.code,
+      fullError: error
+    }, { status: 500 });
+  }
+}

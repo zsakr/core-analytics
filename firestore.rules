@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if user is admin
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == "ziad.sakr40@gmail.com";
+    }
+
+    match /admins/{id} {
+      // Only allow admin to read/write admin data
+      allow read, write: if isAdmin();
+    }
+
+    match /users/{email} {
+      // Allow server-side writes and reads
+      allow read, write: if true;
+    }
+    
+    match /tempUsers/{email} {
+      allow read, write: if true;
+    }
+
+    match /stripe_payments/{id} {
+      // Only allow admin to read payments
+      allow read: if isAdmin();
+      // Allow server-side writes
+      allow write: if true;
+    }
+  }
+}

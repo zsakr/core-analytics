@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode colors */
+    --background: 0 0% 100%; /* #FFFFFF */
+    --foreground: 0 0% 0%; /* #000000 */
+
+    --card: 210 40% 98%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 210 40% 98%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Electric blue */
+    --primary: 0 0% 0%; /* #000000 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 160 84% 39%; /* #10b981 */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%; /* #64748b */
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 210 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar: 210 40% 98%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-ring: 210 100% 50%;
+
+    /* Chart Colors */
+    --chart-1: 210 100% 50%; /* Electric blue */
+    --chart-2: 160 84% 39%; /* #10b981 */
+    --chart-3: 31 80% 60%;
+    --chart-4: 291 64% 42%;
+    --chart-5: 199 89% 48%;
+  }
+
+  .dark {
+    /* Dark mode colors */
+    --background: 0 0% 0%; /* #000000 */
+    --foreground: 0 0% 100%; /* #FFFFFF */
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Electric blue for dark mode */
+    --primary: 0 0% 100%; /* #FFFFFF */
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 160 84% 39%; /* #10b981 */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 16% 47%; /* #64748b */
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 210 100% 60%;
+
+    /* Sidebar */
+    --sidebar: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-ring: 210 100% 60%;
+
+    /* Chart Colors */
+    --chart-1: 210 100% 60%; /* Electric blue for dark mode */
+    --chart-2: 160 84% 39%; /* #10b981 */
+    --chart-3: 31 80% 60%;
+    --chart-4: 291 64% 42%;
+    --chart-5: 199 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border font-open-sauce-one;
+  }
+  body {
+    @apply bg-background text-foreground font-light;
+  }
+
+  /* Apply thinner font weights to headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-normal;
+  }
+
+  /* Make headings slightly lighter */
+  h1 {
+    @apply font-medium;
+  }
+
+  /* Enhance card titles with lighter weight */
+  .card-title {
+    @apply font-normal;
+  }
+}
+
+
+
