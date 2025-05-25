@@ -1,20 +1,21 @@
-'use client';
+"use client";
 
-import { useSearchParams } from 'next/navigation';
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from 'next/link';
 
-export default function VerificationErrorPage() {
+const errorMessages: { [key: string]: string } = {
+  invalid_request: 'Invalid verification request. Please try again.',
+  verification_failed: 'Email verification failed. Please request a new verification link.',
+  user_not_found: 'User not found. Please contact support.',
+  creation_failed: 'Failed to create user account. Please contact support.',
+  server_error: 'Server error occurred. Please try again later.',
+  unknown: 'An unknown error occurred. Please try again.',
+};
+
+function VerificationErrorContent() {
   const searchParams = useSearchParams();
   const error = searchParams?.get('error') || 'unknown';
-
-  const errorMessages: { [key: string]: string } = {
-    invalid_request: 'Invalid verification request. Please try again.',
-    verification_failed: 'Email verification failed. Please request a new verification link.',
-    user_not_found: 'User not found. Please contact support.',
-    creation_failed: 'Failed to create user account. Please contact support.',
-    server_error: 'Server error occurred. Please try again later.',
-    unknown: 'An unknown error occurred. Please try again.',
-  };
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50">
@@ -31,5 +32,13 @@ export default function VerificationErrorPage() {
         </Link>
       </div>
     </div>
+  );
+}
+
+export default function VerificationErrorPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <VerificationErrorContent />
+    </Suspense>
   );
 }

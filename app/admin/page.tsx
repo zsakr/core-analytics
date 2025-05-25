@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation"
 import { auth, db } from "@/lib/firebase"
 import { doc, getDoc } from "firebase/firestore"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { UserList } from "@/components/admin/user-list"
-import { TransactionList } from "@/components/admin/transaction-list"
+import { UserList } from "../../components/admin/user-list"
+import { TransactionList } from "../../components/admin/transaction-list"
 
 export default function AdminPage() {
   const router = useRouter()

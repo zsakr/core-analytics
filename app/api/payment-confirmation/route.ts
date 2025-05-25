@@ -178,14 +178,14 @@ export async function POST(req: NextRequest) {
           firstName: userData.firstName,
           lastName: userData.lastName,
           emailVerified: false,
-          ageCategory: userData.ageCategory,
+          ageCategory: userData.ageCategory as AgeCategory,
           location: {
             country: userData.country,
             state: userData.state,
             city: userData.city
           },
           club: userData.club || null,
-          membershipPlan: userData.selectedPlan,
+          membershipPlan: userData.selectedPlan as MembershipPlan,
           subscriptionStatus: "active",
           rating: userData.rating ? parseFloat(userData.rating) : null,
           worldRanking: userData.worldRanking || null

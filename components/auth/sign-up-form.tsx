@@ -48,6 +48,8 @@ const PLAN_OPTIONS = [
     value: 'core-beta',
     label: 'Core Beta',
     price: 14.99,
+    originalPrice: 24.99,
+    discount: 40,
     description: 'Ideal for casual players seeking insights on a budget',
     features: [
       '6 uploads per month',

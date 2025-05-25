@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Suspense } from "react"
 import Link from "next/link"
 import { SignUpForm } from "@/components/auth/sign-up-form"
 
@@ -27,7 +28,9 @@ export default function SignUpPage() {
         </div>
 
         <div className="bg-card p-6 shadow-sm rounded-lg w-full max-w-[1400px] mx-auto">
-          <SignUpForm />
+          <Suspense fallback={<div>Loading...</div>}>
+            <SignUpForm />
+          </Suspense>
           <p className="mt-6 text-center text-sm text-muted-foreground">
             By clicking continue, you agree to our{" "}
             <Link href="/terms" className="font-medium hover:text-primary">

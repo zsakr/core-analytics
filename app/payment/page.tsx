@@ -191,6 +191,9 @@ export default function PaymentPage() {
       setLoading(true);
       try {
         // Get the email from the URL params
+        if (!searchParams) {
+          throw new Error("Search params not available");
+        }
         const email = searchParams.get("email");
         if (!email) {
           throw new Error("Email is required");
