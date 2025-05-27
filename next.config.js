@@ -5,6 +5,7 @@ const nextConfig = {
     FIREBASE_CLIENT_EMAIL: process.env.FIREBASE_CLIENT_EMAIL,
     FIREBASE_PRIVATE_KEY: process.env.FIREBASE_PRIVATE_KEY,
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
+    NEXT_PUBLIC_FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
   },
   allowedDevOrigins: ['127.0.0.1', 'localhost'],
   images: {

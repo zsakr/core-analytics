@@ -2,6 +2,18 @@ import { NextResponse } from "next/server";
 import { adminDb, adminAuth } from "@/lib/firebase-admin";
 import Stripe from "stripe";
 import { createClient } from '@supabase/supabase-js';
+import { initializeApp } from 'firebase/app';
+
+// Initialize Firebase app
+const firebaseConfig = {
+  apiKey: process.env.FIREBASE_API_KEY,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+};
+
+initializeApp(firebaseConfig);
+
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-04-30.basil",
@@ -147,8 +159,13 @@ export async function POST(request: Request) {
           const customToken = await adminAuth.createCustomToken(userRecord.uid);
 
           // Sign in with custom token to get ID token
+          const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY || process.env.FIREBASE_API_KEY;
+          if (!apiKey) {
+            throw new Error('Firebase API key is not configured');
+          }
+
           const signInResponse = await fetch(
-            `https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=${process.env.FIREBASE_API_KEY}`,
+            `https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=${apiKey}`,
             {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -156,12 +173,18 @@ export async function POST(request: Request) {
             }
           );
 
+          if (!signInResponse.ok) {
+            const errorData = await signInResponse.json();
+            console.error('Error signing in with custom token:', errorData);
+            throw new Error('Failed to sign in with custom token');
+          }
+
           const signInData = await signInResponse.json();
           const idToken = signInData.idToken;
 
           // Send verification email
-          await fetch(
-            `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${process.env.FIREBASE_API_KEY}`,
+          const verifyResponse = await fetch(
+            `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${apiKey}`,
             {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -171,6 +194,12 @@ export async function POST(request: Request) {
               })
             }
           );
+
+          if (!verifyResponse.ok) {
+            const errorData = await verifyResponse.json();
+            console.error('Error sending verification email:', errorData);
+            throw new Error('Failed to send verification email');
+          }
 
           console.log('Verification email sent to:', email);
         } catch (emailError) {
