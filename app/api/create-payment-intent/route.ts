@@ -1,18 +1,25 @@
 import { NextResponse } from "next/server";
 import { adminDb } from "@/lib/firebase-admin";
 import Stripe from "stripe";
-import { initializeApp } from 'firebase/app';
-
-// Initialize Firebase app
-const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || process.env.FIREBASE_API_KEY,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-};
-
-initializeApp(firebaseConfig);
+import { initializeApp, getApps } from 'firebase/app';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
+
+// Initialize Firebase app only if it hasn't been initialized
+function initializeFirebase() {
+  if (getApps().length === 0) {
+    const firebaseConfig = {
+      apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || process.env.FIREBASE_API_KEY,
+      projectId: process.env.FIREBASE_PROJECT_ID,
+    };
+    if (!firebaseConfig.apiKey) {
+      throw new Error('Firebase API key is not configured');
+    }
+    return initializeApp(firebaseConfig);
+  }
+  return getApps()[0];
+}
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-04-30.basil" as const,
@@ -20,6 +27,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 
 export async function POST(request: Request) {
   try {
+    // Initialize Firebase
+    initializeFirebase();
     const body = await request.json();
     const { planId, billingCycle, price, planName, email } = body;
 
