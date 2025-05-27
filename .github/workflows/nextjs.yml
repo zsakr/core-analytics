@@ -32,11 +32,18 @@ jobs:
 
       - name: Build with Next.js
         env:
-          FIREBASE_PROJECT_ID: "${{ secrets.FIREBASE_PROJECT_ID }}"
-          FIREBASE_CLIENT_EMAIL: "${{ secrets.FIREBASE_CLIENT_EMAIL }}"
-          FIREBASE_PRIVATE_KEY: "${{ secrets.FIREBASE_PRIVATE_KEY }}"
-          FIREBASE_API_KEY: "${{ secrets.FIREBASE_API_KEY }}"
-          NEXT_PUBLIC_FIREBASE_API_KEY: "${{ secrets.FIREBASE_API_KEY }}"
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
+          FIREBASE_PRIVATE_KEY: '${{ secrets.FIREBASE_PRIVATE_KEY }}'
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}
+          NEXT_PUBLIC_APP_URL: ${{ secrets.NEXT_PUBLIC_APP_URL }}
+          STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
         run: npm run build
 
       - name: Add .nojekyll file
