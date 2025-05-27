@@ -38,23 +38,15 @@ jobs:
           FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
         run: npm run build
 
-      - name: Export
-        env:
-          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
-          FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
-          FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
-          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
-        run: npm run export
-
       - name: Add .nojekyll file
-        run: touch ./out/.nojekyll
+        run: touch ./.next/.nojekyll
 
       - name: Add CNAME file
-        run: echo "core-analytics.ai" > ./out/CNAME
+        run: echo "core-analytics.ai" > ./.next/CNAME
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: out
+          folder: .next
           clean: true
