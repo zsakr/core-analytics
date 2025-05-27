@@ -1,4 +1,7 @@
 import { NextResponse } from 'next/server';
+
+export const dynamic = 'force-static';
+export const revalidate = false;
 import { adminAuth } from '@/lib/firebase-admin';
 import { initializeApp } from 'firebase/app';
 import { getAuth, sendEmailVerification } from 'firebase/auth';

@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
+
+export const dynamic = 'force-static';
+export const revalidate = false;
 import { doc, getDoc, deleteDoc } from "firebase/firestore"
 import { createUserWithEmailAndPassword } from "firebase/auth"
 import { db, auth } from "@/lib/firebase"

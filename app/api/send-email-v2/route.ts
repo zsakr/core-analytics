@@ -1,4 +1,7 @@
 import { NextResponse } from 'next/server';
+
+export const dynamic = 'force-static';
+export const revalidate = false;
 import { adminAuth } from '@/lib/firebase-admin';
 
 export async function GET() {
