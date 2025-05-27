@@ -1,8 +1,18 @@
 import { NextResponse } from "next/server";
+import { adminDb } from "@/lib/firebase-admin";
 import Stripe from "stripe";
+import { initializeApp } from 'firebase/app';
 
-export const dynamic = 'force-dynamic'
-export const runtime = 'nodejs'
+// Initialize Firebase app
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || process.env.FIREBASE_API_KEY,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+};
+
+initializeApp(firebaseConfig);
+
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-04-30.basil" as const,
