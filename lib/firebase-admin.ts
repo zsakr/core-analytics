@@ -8,7 +8,7 @@ if (!admin.apps.length) {
       const mockServiceAccount = {
         projectId: 'mock-project-id',
         clientEmail: 'mock@example.com',
-        privateKey: 'mock-key'
+        privateKey: '-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC9QFxsbqGSimRP\n-----END PRIVATE KEY-----'
       };
       admin.initializeApp({
         credential: admin.credential.cert(mockServiceAccount)
@@ -18,10 +18,10 @@ if (!admin.apps.length) {
     throw new Error('Missing Firebase Admin SDK environment variables');
   }
 
-  // Remove any escaped newlines and quotes from the private key
+  // Handle private key formatting
   const privateKey = process.env.FIREBASE_PRIVATE_KEY
-    .replace(/\\n/g, '\n')
-    .replace(/^"|"$/g, '');
+    ? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n')
+    : undefined;
 
   const serviceAccount = {
     projectId: process.env.FIREBASE_PROJECT_ID,
