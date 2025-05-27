@@ -7,6 +7,7 @@ const nextConfig = {
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
     NEXT_PUBLIC_FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
   },
+  output: 'export',
   allowedDevOrigins: ['127.0.0.1', 'localhost'],
   images: {
     unoptimized: true,
