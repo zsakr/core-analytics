@@ -2,25 +2,10 @@ import { NextResponse } from "next/server";
 import { adminDb, adminAuth } from "@/lib/firebase-admin";
 import Stripe from "stripe";
 import { createClient } from '@supabase/supabase-js';
-import { initializeApp, getApps } from 'firebase/app';
+import { getFirebaseApp } from '@/lib/firebase-app';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
-
-// Initialize Firebase app only if it hasn't been initialized
-function initializeFirebase() {
-  if (getApps().length === 0) {
-    const firebaseConfig = {
-      apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || process.env.FIREBASE_API_KEY,
-      projectId: process.env.FIREBASE_PROJECT_ID,
-    };
-    if (!firebaseConfig.apiKey) {
-      throw new Error('Firebase API key is not configured');
-    }
-    return initializeApp(firebaseConfig);
-  }
-  return getApps()[0];
-}
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-04-30.basil",
@@ -165,8 +150,8 @@ export async function POST(request: Request) {
           // Create a custom token for the user
           const customToken = await adminAuth.createCustomToken(userRecord.uid);
 
-          // Initialize Firebase and get API key
-          initializeFirebase();
+          // Initialize Firebase and get app
+          getFirebaseApp();
           const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY || process.env.FIREBASE_API_KEY;
           if (!apiKey) {
             throw new Error('Firebase API key is not configured');
