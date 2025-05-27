@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server'
-import { auth } from '@/lib/firebase/admin'
+import { adminAuth as auth } from '@/lib/firebase-admin'
 import { UserProfile } from '@/types/user'
+
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 export async function POST(request: Request) {
   try {
