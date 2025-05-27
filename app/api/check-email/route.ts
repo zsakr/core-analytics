@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { adminDb, adminAuth } from "@/lib/firebase-admin";
 
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 export async function POST(request: Request) {
   try {
     const { email } = await request.json();
