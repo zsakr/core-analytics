@@ -36,7 +36,16 @@ const openSauceOne = localFont({
 export const metadata: Metadata = {
   title: "Core Analytics - Advanced Squash Analytics",
   description: "Professional squash analytics for players and coaches",
-  generator: 'v0.dev'
+  generator: 'v0.dev',
+  icons: {
+    icon: [
+      { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' }
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }
+    ]
+  }
 }
 
 export default function RootLayout({

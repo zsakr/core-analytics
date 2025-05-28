@@ -27,8 +27,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/core-hub" className="text-sm text-muted-foreground hover:text-primary">
-                  Core Hub
+                <Link href="/core-academy" className="text-sm text-muted-foreground hover:text-primary">
+                  Core Academy
                 </Link>
               </li>
               <li>

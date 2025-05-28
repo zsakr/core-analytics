@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { BarChart3, Activity, TrendingUp, Target, Lightbulb, Timer, Footprints } from "lucide-react"
+import { BarChart3, Activity, TrendingUp, Target, Lightbulb, Timer, Footprints, Upload } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
@@ -179,7 +179,46 @@ function CoreInsightsPage() {
   }
 
   return (
-    <div className="container mx-auto py-8 px-4 md:px-6">
+    <div className="container space-y-8 py-8">
+      {/* How it Works Section */}
+      <section className="mb-8">
+        <Card className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950 dark:to-cyan-950 border-blue-200 dark:border-blue-800">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-center">How It Works</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="flex flex-col items-center text-center p-4">
+                <div className="mb-4 p-3 bg-blue-100 dark:bg-blue-900 rounded-full">
+                  <Upload className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2">1. Upload Match</h3>
+                <p className="text-sm text-muted-foreground">Upload your squash match video through our simple interface</p>
+              </div>
+              <div className="flex flex-col items-center text-center p-4">
+                <div className="mb-4 p-3 bg-blue-100 dark:bg-blue-900 rounded-full">
+                  <BarChart3 className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2">2. Get Match Insights</h3>
+                <p className="text-sm text-muted-foreground">Receive detailed analytics for each match, including but not limited toshot analysis and positioning</p>
+              </div>
+              <div className="flex flex-col items-center text-center p-4">
+                <div className="mb-4 p-3 bg-blue-100 dark:bg-blue-900 rounded-full">
+                  <TrendingUp className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2">3. Track Progress</h3>
+                <p className="text-sm text-muted-foreground">View your overall performance dashboard to track improvements over time</p>
+              </div>
+            </div>
+            <div className="flex justify-center mt-6">
+              <Button asChild size="lg">
+                <Link href="/core-upload">Upload Your Match</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
         <div className="space-y-2">
           <h1 className="text-3xl font-bold tracking-tight">Core Insights</h1>

@@ -28,9 +28,7 @@ const plans = {
     billingCycle: "monthly",
     features: [
       "6 uploads per month",
-      "One Time 3 credits included",
       "Basic match analysis",
-      "Core Connect",
     ],
   },
   "performance": {
@@ -42,7 +40,7 @@ const plans = {
       "10 uploads per month",
       "3 monthly credits ($15 value)",
       "All in Core Beta",
-      "Core Hub + AI Squash Coach Chat",
+      "Core Academy + AI Squash Coach Chat",
     ],
   },
   "pro": {

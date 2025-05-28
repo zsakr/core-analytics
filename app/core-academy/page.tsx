@@ -50,7 +50,7 @@ function CoreHubPage() {
         </div>
       </section>
 
-      {/* What is Core Hub Section */}
+      {/* What is Core Academy Section */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -87,7 +87,7 @@ function CoreHubPage() {
               </ul>
             </div>
             <div className="flex flex-col space-y-4">
-              <h3 className="text-2xl font-bold">Why Choose Core Hub Coaching?</h3>
+              <h3 className="text-2xl font-bold">Why Choose Core Academy Coaching?</h3>
               <p className="text-muted-foreground">
                 Experience the perfect blend of human expertise and AI technology. Our coaches use Core's advanced analytics to provide deeper insights and more effective training.
               </p>

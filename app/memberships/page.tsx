@@ -41,10 +41,16 @@ export default function MembershipsPage() {
       features: [
         "Core Features:",
         "• 6 uploads per month",
-        "• Basic match analysis",
+        "• Basic match analysis with shot detection",
         "• Shot pattern recognition",
         "• Performance metrics",
         "• Core Dashboard",
+        "• AI-powered coaching insights",
+        "",
+        "Beta Exclusive:",
+        "• Early access to new features",
+        "• Priority support",
+        "• Community feedback influence",
       ],
       popular: false,
     },
@@ -64,13 +70,13 @@ export default function MembershipsPage() {
         "• Core Connect",
         "• Track your progress with Core Dashboard",
         "• AI Squash Coach Chat: 10 Credits included. Each response is equivalent to 1-credit",
-        "• Core Hub: 1 Free Session to Connect with a Professional",
+        "• Core Academy: 1 Free Session to Connect with a Professional",
         "",
         "Additional Credits & Value Included:",
         "• 3 Monthly Credits ($15 value)",
         "• Use credits for:",
         "  - Extra Uploads",
-        "  - Core Hub: Connect with a Professional",
+        "  - Core Academy: Connect with a Professional",
         "  - AI Squash Coach Chat",
       ],
       popular: true,
@@ -90,14 +96,14 @@ export default function MembershipsPage() {
         "• Core Connect",
         "• Track your progress with Core Dashboard",
         "• AI Squash Coach Chat: 50 Credits Included. Each response is equivalent to 1-credit",
-        "• Core Hub: 2 free sessions to get 1-on-1 online coaching session with a Core Professional",
+        "• Core Academy: 2 free sessions to get 1-on-1 online coaching session with a Core Professional",
         "",
         "Additional Credits & Value Included:",
         "• 6 monthly credits ($30 value)",
         "• Use freely across:",
         "  - Premium coaching",
         "  - Extra Uploads",
-        "  - Core Hub: Connect with a Professional",
+        "  - Core Academy: Connect with a Professional",
         "  - AI Squash Coach Chat",
       ],
       popular: false,
@@ -275,13 +281,151 @@ export default function MembershipsPage() {
           </Card>
         ))}
       </div>
+                {/* Coming Soon Features */}
+                <div className="mt-24 relative">
+            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2">
+              <Badge className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-1 text-sm">
+                Coming Soon
+              </Badge>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+              {/* Core Academy */}
+              <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                <div className="relative z-10">
+                  
+                  <h3 className="text-2xl font-bold text-white mb-2">Advanced Performance Analytics</h3>
+                  <p className="text-gray-400 mb-6">Advanced analytics and personalized insights to elevate your game</p>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      
+                      <h4 className="text-lg font-semibold text-purple-400 mb-3">Advanced Shot Analysis</h4>
+                      <ul className="space-y-2 text-gray-300">
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2"></div>
+                          Ball speed tracking
+                        </li>
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2"></div>
+                          Ball placement analysis
+                        </li>
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2"></div>
+                          Forehand quality metrics
+                        </li>
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2"></div>
+                          Backhand quality metrics
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div>
+                    <h4 className="text-lg font-semibold text-purple-400 mb-3">Real-time Analysis</h4>
+                      <ul className="space-y-2 text-gray-300 mb-6">
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2"></div>
+                          Live match insights
+                        </li>
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2"></div>
+                          Instant performance feedback
+                        </li>
+                      </ul>
+
+                    <h4 className="text-lg font-semibold text-purple-400 mb-3">Advanced Core AI Chatbot Coach</h4>
+                      <ul className="space-y-2 text-gray-300 mb-6">
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2"></div>
+                          Personalized coaching insights
+                        </li>
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2"></div>
+                          AI-powered technique analysis
+                        </li>
+                      </ul>
+
+                      <h4 className="text-lg font-semibold text-purple-400 mb-3">Advanced Movement Analysis</h4>
+                      <ul className="space-y-2 text-gray-300">
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2"></div>
+                          Speed tracking
+                        </li>
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2"></div>
+                          T position control
+                        </li>
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2"></div>
+                          Movement heatmaps
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+
+              {/* Core Connect */}
+              <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold text-white mb-2">Core Academy & Core Connect</h3>
+                  <p className="text-gray-400 mb-6">Connect with pro coaches and players in our exclusive network</p>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="text-lg font-semibold text-pink-400 mb-3">Professional Development</h4>
+                      <ul className="space-y-2 text-gray-300">
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-pink-400 mr-2"></div>
+                          1-on-1 coaching sessions
+                        </li>
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-pink-400 mr-2"></div>
+                          Live video analysis
+                        </li>
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-pink-400 mr-2"></div>
+                          Pro player network access
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="text-lg font-semibold text-pink-400 mb-3">Community Features</h4>
+                      <ul className="space-y-2 text-gray-300">
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-pink-400 mr-2"></div>
+                          Community challenges
+                        </li>
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-pink-400 mr-2"></div>
+                          Virtual tournaments
+                        </li>
+                        <li className="flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-pink-400 mr-2"></div>
+                          Exclusive training events
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+   
+                </div>
+              </div>
+            </div>
+          </div>
 
       {/* Credit Packs Section */}
       {/*
       <div className="mt-12">
         <h2 className="text-xl font-semibold text-center text-white mb-4">Need Extra Credits?</h2>
         <p className="text-center text-gray-300 mb-8 max-w-2xl mx-auto">
-          Credits can be used for extra match uploads, premium coaching sessions in Core Hub, or extended AI Squash Coach conversations. Each credit gives you access to:
+          Credits can be used for extra match uploads, premium coaching sessions in Core Academy, or extended AI Squash Coach conversations. Each credit gives you access to:
           <br/><br/>
           • 1 match upload and analysis<br/>
           • 5 Core AI Squash Coach Chat responses
@@ -396,6 +540,8 @@ export default function MembershipsPage() {
               </p>
             </div>
           </div>
+
+
 
         </div>
       </div>

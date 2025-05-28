@@ -6,15 +6,17 @@ import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
-import Image from "next/image"
+import { Logo } from "@/components/logo"
+import { useTheme } from "next-themes"
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
+  const { theme } = useTheme()
 
   const routes = [
     { href: "/core-insights", label: "Core Insights" },
-    { href: "/core-hub", label: "Core Hub" },
+    { href: "/core-academy", label: "Core Academy" },
     { href: "/core-connect", label: "Core Connect" },
     { href: "/memberships", label: "Memberships" },
   ]
@@ -23,11 +25,11 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex items-center">
-            <div className="text-2xl font-semibold tracking-tight">
-              <span>Core</span>
-              <span className="ml-1">Analytics.</span>
-            </div>
+          <div className="text-2xl font-semibold tracking-tight">
+            <span>C</span>
+            <span className="relative inline-block dark:bg-white bg-black w-3.5 h-3.5 rounded-full -translate-y-[1px]"></span>
+            <span>re</span>
+            <span className="ml-1">Analytics.</span>
           </div>
         </Link>
 

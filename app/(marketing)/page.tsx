@@ -175,14 +175,14 @@ function HomePage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {/* Core Hub */}
+              {/* Core Academy */}
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-gray-200 dark:border-gray-800 group-hover:border-blue-500 transition-all">
                   <div className="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6">
                     <Command className="h-8 w-8 text-blue-500" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-colors">Core Hub</h3>
+                  <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-colors">Core Academy</h3>
                   <p className="text-gray-600 dark:text-gray-400 group-hover:text-blue-50 transition-colors mb-6">
                     Connect with elite squash coaches from the Core team for personalized, one-on-one coaching sessions. Get expert guidance tailored to your game.
                   </p>

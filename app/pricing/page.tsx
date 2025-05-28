@@ -28,7 +28,7 @@ const PLANS = {
     credits: 3,
     features: [
       'All Core Beta features',
-      'Core Hub access',
+      'Core Academy access',
       'AI Squash Coach Chat',
       '3 monthly credits ($15 value)',
     ]
