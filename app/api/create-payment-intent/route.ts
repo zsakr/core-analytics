@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-04-30.basil" as const,
+  apiVersion: "2025-05-28.basil" as const,
 });
 
 export async function POST(request: Request) {
