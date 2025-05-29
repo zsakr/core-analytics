@@ -105,9 +105,8 @@ export function SignUpForm() {
   const [worldRanking, setWorldRanking] = React.useState<string>("")
   const router = useRouter()
   const searchParams = useSearchParams()
-  const [selectedPlan, setSelectedPlan] = React.useState<MembershipPlan>(
-    (searchParams?.get('plan') as MembershipPlan) || 'core-beta'
-  )
+  // Core Beta is required by default
+  const [selectedPlan] = React.useState<MembershipPlan>('core-beta')
   const [selectedCreditPack, setSelectedCreditPack] = React.useState<string | undefined>(undefined)
   const [password, setPassword] = React.useState('')
   const [confirmPassword, setConfirmPassword] = React.useState('')
@@ -234,7 +233,7 @@ export function SignUpForm() {
   return (
     <div className="w-full px-4 py-12">
       <h1 className="text-3xl font-semibold text-center mb-6">Create an Account</h1>
-      <p className="text-center text-muted-foreground mb-12">Choose a plan and tell us about yourself</p>
+      <p className="text-center text-muted-foreground mb-12">Core Beta access is required for early users</p>
 
       {/* Plan Cards */}
       <div className="w-full">
@@ -242,11 +241,7 @@ export function SignUpForm() {
           {PLAN_OPTIONS.map((plan) => (
             <div
               key={plan.value}
-              className={`relative rounded-lg border p-4 cursor-pointer transition-all duration-200 ${selectedPlan === plan.value
-                ? 'border-primary bg-primary/5 shadow-sm'
-                : 'border-border hover:border-primary/50'
-                }`}
-              onClick={() => setSelectedPlan(plan.value as MembershipPlan)}
+              className={`relative rounded-lg border p-4 ${plan.value === 'core-beta' ? 'border-primary bg-primary/5 shadow-sm' : 'border-border opacity-50'}`}
             >  
               <h3 className="text-lg font-semibold">{plan.label}</h3>
               <p className="text-sm text-muted-foreground">{plan.description}</p>

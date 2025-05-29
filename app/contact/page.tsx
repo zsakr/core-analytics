@@ -96,8 +96,7 @@ function ContactPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p>contact@coreanalytics.com</p>
-            <p>support@coreanalytics.com</p>
+
           </CardContent>
         </Card>
       </div>

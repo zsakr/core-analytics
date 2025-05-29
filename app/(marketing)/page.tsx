@@ -80,6 +80,101 @@ function HomePage() {
         </div>
       </section>
 
+      {/* How It Works Section */}
+      <section className="w-full py-20 bg-gradient-to-b from-white to-blue-50 dark:from-gray-900 dark:to-gray-800">
+        <div className="container px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 mb-4">How Core Analytics Works</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Your complete squash analytics platform. Every match. Every insight. One place.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+            {/* Step 1 */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-blue-100 dark:bg-blue-900/30 rounded-2xl transform group-hover:scale-105 transition-transform duration-300 -z-10"></div>
+              <div className="p-8 relative flex flex-col items-center text-center space-y-4">
+                <div className="w-20 h-20 bg-white dark:bg-gray-800 rounded-2xl shadow-lg flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                  <Upload className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+                </div>
+                <h3 className="text-2xl font-semibold">1. Upload Match</h3>
+                <p className="text-gray-600 dark:text-gray-400">Upload any match video to our secure platform. Build your match history in one centralized location.</p>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-blue-100 dark:bg-blue-900/30 rounded-2xl transform group-hover:scale-105 transition-transform duration-300 -z-10"></div>
+              <div className="p-8 relative flex flex-col items-center text-center space-y-4">
+                <div className="w-20 h-20 bg-white dark:bg-gray-800 rounded-2xl shadow-lg flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                  <Brain className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+                </div>
+                <h3 className="text-2xl font-semibold">2. AI Analysis</h3>
+                <p className="text-gray-600 dark:text-gray-400">Our AI analyzes each match in detail while tracking patterns across all your games.</p>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-blue-100 dark:bg-blue-900/30 rounded-2xl transform group-hover:scale-105 transition-transform duration-300 -z-10"></div>
+              <div className="p-8 relative flex flex-col items-center text-center space-y-4">
+                <div className="w-20 h-20 bg-white dark:bg-gray-800 rounded-2xl shadow-lg flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                  <LineChart className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+                </div>
+                <h3 className="text-2xl font-semibold">3. Get Insights</h3>
+                <p className="text-gray-600 dark:text-gray-400">Access match-specific analysis and track your progress over time with comprehensive trend analysis.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Analysis Features */}
+          <div className="mt-20 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                  <Activity className="w-6 h-6 text-blue-600" />
+                  Single Match Analysis
+                </h3>
+                <ul className="space-y-3 text-gray-600 dark:text-gray-400">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    Detailed shot-by-shot breakdown
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    Movement and positioning heatmaps
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    Key moments and pressure points
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                  <TrendingUp className="w-6 h-6 text-blue-600" />
+                  Long-term Progress Tracking
+                </h3>
+                <ul className="space-y-3 text-gray-600 dark:text-gray-400">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    Performance trends across matches
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    Pattern recognition and habits
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    Improvement recommendations
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Core Benefits Section */}
       <section className="w-full py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
         <div className="container px-4 md:px-6">
