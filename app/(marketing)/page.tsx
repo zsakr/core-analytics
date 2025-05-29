@@ -84,7 +84,7 @@ function HomePage() {
       <section className="w-full py-20 bg-gradient-to-b from-white to-blue-50 dark:from-gray-900 dark:to-gray-800">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 mb-4">How Core Analytics Works</h2>
+            <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 mb-4">How Core Insights Works</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Your complete squash analytics platform. Every match. Every insight. One place.</p>
           </div>
           
