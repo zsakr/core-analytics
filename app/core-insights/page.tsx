@@ -1339,7 +1339,11 @@ function CoreInsightsPage() {
               </div>
             </CardContent>
           </Card>
+          
         </div>
+
+
+
 
         {/* Average Speed Throughout Games */}
         <Card>

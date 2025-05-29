@@ -35,7 +35,7 @@ export default function MembershipsPage() {
   const individualPlans = [
     {
       title: "Core Beta",
-      description: "Join the beta and get access to the core features",
+      description: "Join the beta to access Core's features early. Launching June 15th for a limited number of users—first come, first served.",
       monthlyPrice: 14.99,
       monthlyCredits: 3,
       features: [
@@ -137,7 +137,7 @@ export default function MembershipsPage() {
               Join Core's Beta Access Program
             </h1>
             <p className="text-xl text-indigo-100 max-w-3xl mx-auto mb-6">
-              Lock in special Beta member pricing - up to 30% off first year
+              Lock in special Beta member pricing - up to 30% off first year. Launching June 15th for a limited number of users—first come, first served.
             </p>
             <div className="flex flex-col items-center justify-center space-y-6">
               {/* 

@@ -68,8 +68,8 @@ function HomePage() {
               </Button>
               <div className="mt-16 bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto">
                 <div className="space-y-4 text-center">
-                  <h3 className="text-2xl font-bold text-white">Beta Access Launch Offer</h3>
-                  <p className="text-lg text-blue-100">Join now and get access to the beta features</p>
+                  <h3 className="text-2xl font-bold text-white">Early Access</h3>
+                  <p className="text-lg text-blue-100">Limited beta spots available</p>
                   <Button asChild size="xl" variant="secondary" className="font-medium mr-4">
                     <Link href="/memberships">Sign Up Now</Link>
                   </Button>
@@ -85,10 +85,10 @@ function HomePage() {
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-white dark:to-white py-2">
-            From court to clarity in minutes
+            Court to Clarity
             </h2>
             <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-600 dark:text-gray-300">
-            Smarter analysis for sharper performance — built for players and coaches alike.
+            Pro-level insights for players and coaches
             </p>
           </div>
 
