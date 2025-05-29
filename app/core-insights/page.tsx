@@ -212,7 +212,7 @@ function CoreInsightsPage() {
             </div>
             <div className="flex justify-center mt-6">
               <Button asChild size="lg">
-                <Link href="/core-upload">Upload Your Match</Link>
+                <Link href="/memberships">Sign Up</Link>
               </Button>
             </div>
           </CardContent>
