@@ -93,7 +93,7 @@ function ProfilePage() {
         <Tabs defaultValue="profile" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="profile">Profile</TabsTrigger>
-            <TabsTrigger value="upload">Core Upload</TabsTrigger>
+            <TabsTrigger value="upload">Core Insight</TabsTrigger>
           </TabsList>
           <TabsContent value="profile" className="mt-6">
             <div className="grid gap-6">
