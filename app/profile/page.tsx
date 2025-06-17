@@ -172,7 +172,7 @@ function ProfilePage() {
               </CardHeader>
               <CardContent className="text-center py-12">
                 <p className="text-lg text-muted-foreground">
-                  Our core upload feature is currently under development. We are releasing an update by June 15th. Stay tuned for updates!
+                  Our core upload feature is currently under development. We are releasing an update by June 20th. Stay tuned for updates!
                 </p>
               </CardContent>
             </Card>
